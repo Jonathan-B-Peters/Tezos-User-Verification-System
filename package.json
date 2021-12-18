@@ -1,0 +1,33 @@
+{
+  "name": "tezos-user-verification-system",
+  "version": "1.0.0",
+  "description": "A system for creating a unique user identity in the form of an NFT using the Tezos FA2 token standard.",
+  "main": "index.js",
+  "scripts": {
+    "start-sandbox": "docker run --rm --name test-sandbox --detach -p 20000:20000 tqtezos/flextesa:20210602 flobox start",
+    "ligo": "docker run --rm -v \"%CD%\":/cd -w /cd ligolang/ligo:0.29.0",
+    "compile-nft": "ligo compile contract ./contracts/main/non-fungible-token.ligo -e main",
+    "compile-nft-to-json": "ligo compile contract ./contracts/main/non-fungible-token.ligo -e main --format json > ./contracts/json/non-fungible-token.tz.json",
+    "test": "ts-mocha"
+  },
+  "repository": "git+https://github.com/Jonathan-B-Peters/Tezos-User-Verification-System.git",
+  "author": "Jonathan Peters",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Jonathan-B-Peters/Tezos-User-Verification-System/issues"
+  },
+  "homepage": "https://github.com/Jonathan-B-Peters/Tezos-User-Verification-System#readme",
+  "private": false,
+  "dependencies": {
+    "@taquito/signer": "^11.0.2",
+    "@taquito/taquito": "^11.0.2",
+    "@types/node": "^16.11.12",
+    "ts-mocha": "^8.0.0",
+    "typescript": "^4.5.3"
+  },
+  "devDependencies": {
+    "@types/mocha": "^9.0.0",
+    "mocha": "^9.1.3",
+    "ts-node": "^10.4.0"
+  }
+}
